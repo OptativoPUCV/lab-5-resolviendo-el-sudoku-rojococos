@@ -44,28 +44,130 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
+   int i,j;
+   //i sera fila y j sera columna
+   int aux = 0;
+   
+   int pos;
+   //verificar filas
+   for(j=0;j<9;j++){
+      int *arr = (int*) calloc(9, sizeof(int));
+      for(i=0;i<9;i++){
+         if(n->sudo[i][j] != 0){
+            pos = n->sudo[i][j] - 1; //pos -1 porque las pos del array van del 0 al 8
+            arr[pos]++;
+            if(arr[pos] > 1)
+               return 0;
+         }
+      }  
+      free(arr);
+      
+   }
+   //verificar columnas
+   for(i=0;i<9;i++){
+      int *arr = (int*) calloc(9, sizeof(int));
+      for(j=0;j<9;j++){
+         if(n->sudo[i][j] != 0)
+            pos = n->sudo[i][j] - 1;
+            arr[pos]++;
+            if(arr[pos] > 1)
+               return 0;
+      }
+      free(arr);
+   }
 
-    return 1;
+   //verificar subcuadrados
+   for(i=0;i<9;i+=3){
+      for(j=0;j<9;j+=3){
+
+         //verificar cada subcuadrado
+         int *arr = (int*) calloc(9, sizeof(int));
+         for(int k=i;k<i+3;k++)
+            for(int l=j;l<j+3;l++){
+               if(n->sudo[k][l] != 0){
+                  pos = n->sudo[k][l] - 1;
+                  arr[pos]++;
+                  if(arr[pos] > 1)
+                     return 0;
+               }
+            }
+         free(arr);               
+      }
+   }
+
+   
+   
+   return 1;
 }
 
 
 List* get_adj_nodes(Node* n){
-    List* list=createList();
-    return list;
+   List* list=createList();
+   int aux = 1;
+   int fila = 0;
+   int columna = 0;
+   int buscar = 1;
+
+   //buscar la pos vacia o 0
+   while(buscar != 0){
+      for(int i = 0; i < 9; i++)
+         for(int j = 0; j < 9; j++)
+             if(n->sudo[i][j] == 0){
+                fila = i;
+                columna = j;
+             }
+   }
+
+   //rellenar la pos vacia con todo numero del 1 al 9   
+   while(aux < 10){
+      Node * nuevo = createNode();
+      nuevo = copy(n);
+      nuevo->sudo[fila][columna] = aux;
+      if(is_valid(nuevo))
+         pushBack(list,nuevo);
+      
+      aux++;
+   }
+   return list;
 }
 
 
 int is_final(Node* n){
-    return 0;
+   for(int i = 0; i < 9; i++)
+      for(int j = 0; j < 9; j++)
+         if(n->sudo[i][j] == 0)
+            return 0;
+   
+   return 1;
 }
 
 Node* DFS(Node* initial, int* cont){
-  return NULL;
+   Stack *s = createStack();
+   push(s,initial);
+
+   while(1){
+      Node *n = top(s);
+      if(n == NULL)return NULL;
+      
+      cont++;
+      pop(s);
+      if(is_final(n)) return n;
+      List *adj = get_adj_nodes(n);
+      free(n);
+      Node * aux = first(adj);
+      
+      while(aux != NULL){
+         push(s,aux);
+         aux = next(adj);
+      }      
+   }
+      
+   
 }
 
 
 
-/*
+//*
 int main( int argc, char *argv[] ){
 
   Node* initial= read_file("s12a.txt");;
@@ -76,4 +178,5 @@ int main( int argc, char *argv[] ){
   print_node(final);
 
   return 0;
-}*/
+}
+//*/

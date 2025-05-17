@@ -1,0 +1,24 @@
+Sat 17 May 2025 11:42:33 PM UTC: 
+ sudoku.c | 109 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 106 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:70:10: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+   70 |          if(n->sudo[i][j] != 0)
+      |          ^~
+sudoku.c:72:13: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   72 |             arr[pos]++;
+      |             ^~~
+sudoku.c:49:8: error: unused variable ‘aux’ [-Werror=unused-variable]
+   49 |    int aux = 0;
+      |        ^~~
+test.c: At top level:
+test.c:245:5: error: redefinition of ‘main’
+  245 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+sudoku.c:171:5: note: previous definition of ‘main’ with type ‘int(int,  char **)’
+  171 | int main( int argc, char *argv[] ){
+      |     ^~~~
+cc1: all warnings being treated as errors
+3f0e54c
