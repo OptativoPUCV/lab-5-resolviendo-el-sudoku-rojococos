@@ -46,7 +46,7 @@ void print_node(Node* n){
 int is_valid(Node* n){
    int i,j;
    //i sera fila y j sera columna
-   int aux = 0;
+   
    
    int pos;
    //verificar filas
@@ -67,11 +67,11 @@ int is_valid(Node* n){
    for(i=0;i<9;i++){
       int *arr = (int*) calloc(9, sizeof(int));
       for(j=0;j<9;j++){
-         if(n->sudo[i][j] != 0)
+         if(n->sudo[i][j] != 0){
             pos = n->sudo[i][j] - 1;
             arr[pos]++;
-            if(arr[pos] > 1)
-               return 0;
+            if(arr[pos] > 1) return 0;
+         }
       }
       free(arr);
    }
