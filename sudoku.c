@@ -140,11 +140,7 @@ List* get_adj_nodes(Node* n){
 
       
       if(is_valid(nuevo)){
-         Node * debug = nuevo;
-         if (debug != NULL) {
-             printf("Primer nodo adyacente:\n");
-             print_node(debug);
-         }
+         
          pushFront(list,nuevo);
       }
       aux++;
