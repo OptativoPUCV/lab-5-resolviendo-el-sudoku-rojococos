@@ -121,8 +121,8 @@ List* get_adj_nodes(Node* n){
    int seguro = 2;
    
    //buscar la pos vacia o 0
-   for (int r = 0; r < 9 && seguro != 1; r++) {
-       for (int t = 0; t < 9 && seguro != 1; t++) {
+   for (int r = 0; r < 9 && seguro == 2; r++) {
+       for (int t = 0; t < 9 && seguro == 2; t++) {
            if (n->sudo[r][t] == 0) {
                fila = r;
                columna = t;
@@ -140,7 +140,7 @@ List* get_adj_nodes(Node* n){
       
       if(is_valid(nuevo)){
          
-         pushFront(list,nuevo);
+         pushBack(list,nuevo);
       }
       aux++;
    }
