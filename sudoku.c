@@ -117,10 +117,7 @@ List* get_adj_nodes(Node* n){
                 columna = j;
                 buscar = 0;
              }
-
-
-
-      
+      break;
    }
 
    //rellenar la pos vacia con todo numero del 1 al 9   
@@ -154,7 +151,7 @@ Node* DFS(Node* initial, int* cont){
       Node *n = top(s);
       if(n == NULL)return NULL;
       
-      cont++;
+      (* cont)++;
       pop(s);
       if(is_final(n)) return n;
       List *adj = get_adj_nodes(n);
