@@ -118,14 +118,13 @@ List* get_adj_nodes(Node* n){
    int aux = 1;
    int fila = 0;
    int columna = 0;
-   int buscar = 1;
 
    //buscar la pos vacia o 0
-   for (int i = 0; i < 9 && fila == -1; i++) {
-       for (int j = 0; j < 9; j++) {
-           if (n->sudo[i][j] == 0) {
-               fila = i;
-               columna = j;
+   for (int r = 0; r < 9; r++) {
+       for (int t = 0; t < 9; t++) {
+           if (n->sudo[r][t] == 0) {
+               fila = r;
+               columna = t;
                break;
             }
        }

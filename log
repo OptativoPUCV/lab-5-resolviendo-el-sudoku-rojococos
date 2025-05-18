@@ -128,3 +128,9 @@ sudoku.c:121:8: error: unused variable ‘buscar’ [-Werror=unused-variable]
       |        ^~~~~~
 cc1: all warnings being treated as errors
 e2578c5
+Sun 18 May 2025 04:14:13 AM UTC: 
+ sudoku.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+ tests:  7|2
+total_score: 45/70
+9fa0883
