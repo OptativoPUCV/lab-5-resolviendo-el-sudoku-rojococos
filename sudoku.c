@@ -145,7 +145,7 @@ List* get_adj_nodes(Node* n){
              printf("Primer nodo adyacente:\n");
              print_node(debug);
          }
-         pushBack(list,nuevo);
+         pushFront(list,nuevo);
       }
       aux++;
    }
