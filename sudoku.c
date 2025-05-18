@@ -132,15 +132,18 @@ List* get_adj_nodes(Node* n){
          }
       }
    }
-
+   int nomesale = 0;
    //rellenar la pos vacia con todo numero del 1 al 9   
    while(aux < 10){
       Node *nuevo = copy(n);
       nuevo->sudo[fila][columna] += aux;
-      if(is_valid(nuevo))
+      
+      
+      if(is_valid(nuevo) && nomesale == 1)
          pushBack(list,nuevo);
       
       aux++;
+      nomesale = 1;
    }
    return list;
 }
