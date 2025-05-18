@@ -109,13 +109,18 @@ List* get_adj_nodes(Node* n){
    int buscar = 1;
 
    //buscar la pos vacia o 0
-   while(buscar != 0){
+   while(buscar != 0 ){
       for(int i = 0; i < 9; i++)
          for(int j = 0; j < 9; j++)
              if(n->sudo[i][j] == 0){
                 fila = i;
                 columna = j;
+                buscar = 0;
              }
+
+
+
+      return NULL;
    }
 
    //rellenar la pos vacia con todo numero del 1 al 9   
@@ -167,8 +172,8 @@ Node* DFS(Node* initial, int* cont){
 
 
 
-///*
-int main(){
+/*
+int main( int argc, char *argv[] ){
 
   Node* initial= read_file("s12a.txt");;
 
@@ -179,4 +184,4 @@ int main(){
 
   return 0;
 }
-//*/
+*/
