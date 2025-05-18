@@ -61,7 +61,7 @@ int is_valid(Node* n){
    
    
    int pos;
-   //verificar filas
+   //verificar columnas
    for(j=0;j<9;j++){
       int *arr = (int*) calloc(9, sizeof(int));
       for(i=0;i<9;i++){
@@ -75,7 +75,7 @@ int is_valid(Node* n){
       free(arr);
       
    }
-   //verificar columnas
+   //verificar filas
    for(i=0;i<9;i++){
       int *arr = (int*) calloc(9, sizeof(int));
       for(j=0;j<9;j++){
@@ -121,21 +121,22 @@ List* get_adj_nodes(Node* n){
    int buscar = 1;
 
    //buscar la pos vacia o 0
-   while(buscar != 0 ){
-      for(int i = 0; i < 9; i++)
-         for(int j = 0; j < 9; j++)
+   while(buscar != 0){
+      for(int i = 0; i < 9; i++){
+         for(int j = 0; j < 9; j++){
              if(n->sudo[i][j] == 0){
                 fila = i;
                 columna = j;
                 buscar = 0;
              }
-      
+         }
+      }
    }
 
    //rellenar la pos vacia con todo numero del 1 al 9   
    while(aux < 10){
       Node *nuevo = copy(n);
-      nuevo->sudo[fila][columna] = aux;
+      nuevo->sudo[fila][columna] += aux;
       if(is_valid(nuevo))
          pushBack(list,nuevo);
       
