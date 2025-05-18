@@ -12,9 +12,21 @@ Node* createNode(){
   return n;
 }
 
-Node* copy(Node* n){
+
+
+/*Node* copy(Node* n){
     Node* new=(Node*) malloc(sizeof(Node));
     *new = *n;
+    return new;
+}*/
+
+
+
+Node* copy(Node* n){
+    Node* new=(Node*) malloc(sizeof(Node));
+    for(size_t l = 0; l < 9; l++)
+        for(size_t k = 0; k < 9; k++)
+            new->sudo[l][k] = n->sudo[l][k];
     return new;
 }
 
