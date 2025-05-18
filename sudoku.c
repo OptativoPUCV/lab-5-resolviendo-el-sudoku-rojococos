@@ -120,7 +120,7 @@ List* get_adj_nodes(Node* n){
 
 
 
-      return NULL;
+      
    }
 
    //rellenar la pos vacia con todo numero del 1 al 9   
