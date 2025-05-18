@@ -117,13 +117,12 @@ List* get_adj_nodes(Node* n){
                 columna = j;
                 buscar = 0;
              }
-      break;
+      
    }
 
    //rellenar la pos vacia con todo numero del 1 al 9   
    while(aux < 10){
-      Node * nuevo = createNode();
-      nuevo = copy(n);
+      Node *nuevo = copy(n);
       nuevo->sudo[fila][columna] = aux;
       if(is_valid(nuevo))
          pushBack(list,nuevo);
