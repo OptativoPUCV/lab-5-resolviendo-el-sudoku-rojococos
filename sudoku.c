@@ -132,18 +132,22 @@ List* get_adj_nodes(Node* n){
          }
       }
    }
-   int nomesale = 0;
+
    //rellenar la pos vacia con todo numero del 1 al 9   
    while(aux < 10){
       Node *nuevo = copy(n);
-      nuevo->sudo[fila][columna] += aux;
+      nuevo->sudo[fila][columna] = aux;
+
       
-      
-      if(is_valid(nuevo) && nomesale == 1)
+      if(is_valid(nuevo)){
+         Node * debug = nuevo;
+         if (debug != NULL) {
+             printf("Primer nodo adyacente:\n");
+             print_node(debug);
+         }
          pushBack(list,nuevo);
-      
+      }
       aux++;
-      nomesale = 1;
    }
    return list;
 }
